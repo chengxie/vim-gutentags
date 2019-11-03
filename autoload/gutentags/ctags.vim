@@ -54,11 +54,11 @@ function! gutentags#ctags#init(project_root) abort
     " Set the tags file for Vim to use.
     if g:gutentags_ctags_auto_set_tags
         if has('win32') || has('win64')
-            execute 'setlocal tags^=' . fnameescape(b:gutentags_files['ctags'])
+            execute 'setlocal tags+=' . fnameescape(b:gutentags_files['ctags'])
         else
             " spaces must be literally escaped in tags path
             let l:literal_space_escaped = substitute(fnameescape(b:gutentags_files['ctags']), '\ ', '\\\\ ', 'g')
-            execute 'setlocal tags^=' . l:literal_space_escaped
+            execute 'setlocal tags+=' . l:literal_space_escaped
         endif
     endif
 
